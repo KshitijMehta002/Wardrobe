@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://YOUR_BACKEND_RENDER_URL.onrender.com/api/$1"
+      "destination": "https://wardrobe-backend-8a0a.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
