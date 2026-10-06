@@ -1,0 +1,390 @@
+/* =========================================================
+   PREMIUM NAVBAR STYLING (Prachi Wardrobe)
+   ========================================================= */
+
+/* Top Announcement Bar */
+.navbar-top-bar {
+  background: #07020b;
+  border-bottom: 1px solid rgba(214, 160, 90, 0.15);
+  padding: 6px 32px;
+  font-size: 0.8rem;
+  color: #c7b9d8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.02em;
+}
+
+.top-bar-announcement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-bar-star {
+  color: var(--accent-gold, #d6a05a);
+  font-size: 0.9rem;
+}
+
+.top-bar-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #8e7c9e;
+}
+
+.top-bar-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.top-bar-links a:hover {
+  color: var(--accent-gold, #d6a05a);
+}
+
+.top-bar-sep {
+  opacity: 0.4;
+}
+
+/* Main Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background: rgba(18, 6, 30, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(214, 160, 90, 0.2);
+  box-shadow: 0 4px 28px rgba(10, 2, 20, 0.5), 0 0 20px rgba(100, 20, 140, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Brand & Logo */
+.navbar-brand a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-brand a:hover {
+  opacity: 0.95;
+  color: var(--accent-gold-light, #ebd0a3);
+  transform: translateY(-1px);
+}
+
+.navbar .logo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(214, 160, 90, 0.35);
+  border: 1.5px solid var(--accent, #d6a05a);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, width 0.25s ease, height 0.25s ease;
+  flex-shrink: 0;
+}
+
+.navbar-brand a:hover .logo {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(214, 160, 90, 0.55);
+}
+
+/* Nav Links List */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center;
+}
+
+/* Links */
+.navbar-links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-secondary, #c7b9d8);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--accent-gold-light, #ebd0a3);
+}
+
+/* Active / Hover accent line indicator */
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gold, #d6a05a);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(214, 160, 90, 0.6);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Cart Link & Badge */
+.navbar-cart-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  background: var(--accent-rose, #e11d48);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 8px rgba(225, 29, 72, 0.45);
+}
+
+/* User Profile greeting */
+.navbar-links li a[href="/profile"] {
+  color: var(--accent-gold-light, #ebd0a3);
+  font-weight: 600;
+}
+
+/* Admin badge link */
+.navbar-links li a[href="/admin"] {
+  color: var(--accent-gold, #d6a05a);
+  background: rgba(214, 160, 90, 0.12);
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(214, 160, 90, 0.35);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.navbar-links li a[href="/admin"]:hover {
+  background: rgba(214, 160, 90, 0.22);
+  color: #ffffff;
+  border-color: var(--accent-gold, #d6a05a);
+}
+
+.navbar-links li a[href="/admin"]::after {
+  display: none;
+}
+
+/* Login button link style */
+.navbar-links li a[href="/login"] {
+  background: var(--accent-gold-gradient, linear-gradient(135deg, #ebd0a3 0%, #d6a05a 50%, #aa7432 100%));
+  color: #160800;
+  padding: 7px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(214, 160, 90, 0.35);
+  transition: all 0.2s ease;
+}
+
+.navbar-links li a[href="/login"]:hover {
+  background: linear-gradient(135deg, #f5dfbe 0%, #dfa863 50%, #ba813c 100%);
+  box-shadow: 0 4px 18px rgba(214, 160, 90, 0.5);
+  transform: translateY(-1px);
+}
+
+.navbar-links li a[href="/login"]::after {
+  display: none;
+}
+
+/* Logout Button */
+.btn-logout {
+  background: rgba(225, 29, 72, 0.12);
+  color: #fda4af;
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: rgba(225, 29, 72, 0.25);
+  color: #ffffff;
+  border-color: rgba(225, 29, 72, 0.6);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   COMPACT RESPONSIVE BREAKPOINTS FOR NAVBAR
+   ========================================================= */
+
+/* ── Large Tablet (<=1024px) ── */
+@media (max-width: 1024px) {
+  .navbar-top-bar {
+    padding: 5px 24px;
+  }
+  .navbar {
+    padding: 10px 24px;
+  }
+  .navbar-links {
+    gap: 16px;
+  }
+}
+
+/* ── Tablet (<=768px) — Compact ── */
+@media (max-width: 768px) {
+  .navbar-top-bar {
+    padding: 4px 16px;
+    font-size: 0.74rem;
+  }
+  .navbar {
+    padding: 8px 16px;
+  }
+  .navbar-brand a {
+    font-size: 1.05rem;
+    gap: 8px;
+  }
+  .navbar .logo {
+    width: 34px;
+    height: 34px;
+  }
+  .navbar-links {
+    gap: 12px;
+  }
+  .navbar-links a {
+    font-size: 0.82rem;
+    padding: 4px 2px;
+  }
+  .navbar-links li a[href="/login"] {
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    border-radius: 6px;
+  }
+  .btn-logout {
+    padding: 4px 10px;
+    font-size: 0.76rem;
+  }
+  .nav-cart-badge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.62rem;
+    padding: 0 3px;
+  }
+}
+
+/* ── Mobile (<=600px) — Extra Compact ── */
+@media (max-width: 600px) {
+  .navbar-top-bar {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    justify-content: center;
+    text-align: center;
+  }
+  .top-bar-links {
+    display: none;
+  }
+  .navbar {
+    padding: 6px 12px;
+    flex-wrap: nowrap;
+  }
+  .navbar-brand a {
+    font-size: 0.92rem;
+    gap: 6px;
+  }
+  .navbar .logo {
+    width: 28px;
+    height: 28px;
+  }
+  .navbar-links {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .navbar-links a {
+    font-size: 0.76rem;
+    padding: 3px 2px;
+    white-space: nowrap;
+  }
+  .navbar-links li a[href="/login"] {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+    border-radius: 5px;
+  }
+  .btn-logout {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    border-radius: 5px;
+  }
+  .nav-cart-badge {
+    min-width: 14px;
+    height: 14px;
+    font-size: 0.58rem;
+    padding: 0 2px;
+  }
+}
+
+/* ── Small Mobile (<=400px) — Ultra Compact ── */
+@media (max-width: 400px) {
+  .navbar-top-bar {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+  .navbar {
+    padding: 5px 8px;
+  }
+  .navbar-brand a {
+    font-size: 0.84rem;
+    gap: 4px;
+  }
+  .navbar .logo {
+    width: 24px;
+    height: 24px;
+  }
+  .navbar-links {
+    gap: 6px;
+  }
+  .navbar-links a {
+    font-size: 0.7rem;
+    padding: 2px 1px;
+  }
+  .navbar-links li a[href="/login"] {
+    padding: 3px 8px;
+    font-size: 0.68rem;
+    border-radius: 4px;
+  }
+  .btn-logout {
+    padding: 3px 6px;
+    font-size: 0.68rem;
+  }
+  .nav-cart-badge {
+    min-width: 13px;
+    height: 13px;
+    font-size: 0.54rem;
+    padding: 0 2px;
+  }
+}
