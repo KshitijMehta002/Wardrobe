@@ -24,6 +24,8 @@ const registerUser = async (req, res) => {
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+        // --- OTP Feature (commented out for now - direct registration enabled) ---
+        /*
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
@@ -59,6 +61,35 @@ This OTP is valid for 10 minutes.`;
             requiresOtp: true,
             message: 'OTP sent to your email. Please verify to complete registration.',
             email: normalizedEmail
+        });
+        */
+        // -------------------------------------------------------------------------
+
+        // Direct Registration:
+        let user;
+        if (existingUser && !existingUser.verified) {
+            existingUser.name = name;
+            existingUser.password = hashedPassword;
+            existingUser.verified = true;
+            existingUser.otp = undefined;
+            existingUser.otpExpires = undefined;
+            user = await existingUser.save();
+        } else {
+            user = await User.create({
+                name,
+                email: normalizedEmail,
+                password: hashedPassword,
+                verified: true
+            });
+        }
+
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            token: generateToken(user._id),
+            message: 'Registration successful!'
         });
     } catch (error) {
         console.error('Registration error:', error);
@@ -167,6 +198,8 @@ const loginUser = async (req, res) => {
         const normalizedEmail = email?.toLowerCase().trim();
         const user = await User.findOne({ email: normalizedEmail });
         if (user && (await bcrypt.compare(password, user.password))) {
+            /*
+            // --- OTP Check (commented out for direct login) ---
             if (!user.verified && user.otp) {
                 return res.status(403).json({
                     message: 'Please verify your email before logging in.',
@@ -174,6 +207,7 @@ const loginUser = async (req, res) => {
                     email: user.email
                 });
             }
+            */
             res.json({
                 _id: user._id,
                 name: user.name,

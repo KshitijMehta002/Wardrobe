@@ -51,9 +51,15 @@ const Register = () => {
             const data = await res.json();
 
             if (res.ok) {
-                setStep('otp');
-                setResendCooldown(60);
-                setInfoMsg(data.message || 'OTP has been sent to your email.');
+                if (data.token) {
+                    // Direct registration: log in immediately
+                    login(data);
+                    navigate(redirect ? (redirect.startsWith('/') ? redirect : `/${redirect}`) : '/');
+                } else if (data.requiresOtp) {
+                    setStep('otp');
+                    setResendCooldown(60);
+                    setInfoMsg(data.message || 'OTP has been sent to your email.');
+                }
             } else {
                 setError(data.message || 'Registration failed. Please try again.');
             }
@@ -164,7 +170,7 @@ const Register = () => {
                     />
 
                     <button type="submit" className='btn' disabled={loading}>
-                        {loading ? 'Sending OTP...' : 'Register'}
+                        {loading ? 'Creating Account...' : 'Register'}
                     </button>
 
                     <p>
